@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="./css/normalize.css">
     <link rel="stylesheet" href="./assets/layui/css/layui.css">
     <link rel="stylesheet" href="./css/index.css">
+
+
 </head>
 
 <body>
@@ -185,39 +187,11 @@
             <!-- 焦点图 -->
             <div class="kr_banner">
                 <div class="slides layui-carousel" lay-filter="kr_carousel" id="kr_carousel">
-                    <ul carousel-item>
-                        <li class="img-effect">
-                            <a href="javascript:;">
-                                <img src="./uploads/banner_1.png" alt="">
-                            </a>
-                        </li>
-                        <li class="img-effect">
-                            <a href="javascript:;">
-                                <img src="./uploads/banner_2.png" alt="">
-                            </a>
-                        </li>
-                        <li class="img-effect">
-                            <a href="javascript:;">
-                                <img src="./uploads/banner_3.png" alt="">
-                            </a>
-                        </li>
-                        <li class="img-effect">
-                            <a href="javascript:;">
-                                <img src="./uploads/banner_4.png" alt="">
-                            </a>
-                        </li>
-                        <li class="ad">
-                            <a href="javascript:;">
-                                <img src="./uploads/banner_5.png" alt="">
-                            </a>
-                            <span>商业策划</span>
-                        </li>
-                        <li class="img-effect">
-                            <a href="javascript:;">
-                                <img src="./uploads/banner_6.png" alt="">
-                            </a>
-                        </li>
+                    <ul carousel-item id="test1">
                     </ul>
+
+
+                    <!-- 条目中可以是任意内容，如：<img src=""> -->
                 </div>
                 <!-- 其它 -->
                 <ul class="extra">
@@ -541,8 +515,7 @@
                             <a href="./detail.html" class="title text_overflow">
                                 “幕前天猫，幕后心怡”：中国电商物流风雨二十年
                             </a>
-                            <p class="brief text_overflow">​
-                                两分钟的时间，足够心怡科技走完天猫超市从接单-仓库下单-分拣-包装-储存-出仓的全部流程。
+                            <p class="brief text_overflow">​ 两分钟的时间，足够心怡科技走完天猫超市从接单-仓库下单-分拣-包装-储存-出仓的全部流程。
                             </p>
                             <div class="extra">
                                 <span class="label">商业视角</span>
@@ -641,8 +614,7 @@
                             <a href="javascript:;" class="title text_overflow">
                                 职场中的“积极废人”：我们缺的不是能力，而是执行力
                             </a>
-                            <p class="brief text_overflow">​
-                                没有梦想是不行的，而有梦想却没有执行力也是枉然，执行力可以通过训练和学习获得。定了目标执行不到位，往往是因为缺少有效的方法。
+                            <p class="brief text_overflow">​ 没有梦想是不行的，而有梦想却没有执行力也是枉然，执行力可以通过训练和学习获得。定了目标执行不到位，往往是因为缺少有效的方法。
                             </p>
                             <div class="extra">
                                 <a href="javascript:;" class="author">一刻talks</a>
@@ -1049,8 +1021,7 @@
                 <div class="kr_copyright">
                     <p>
                         <span>本站由</span>
-                        <a href="javascript:;">阿里云</a>
-                        提供计算与安全服务 违法和不良信息举报电话：010-58254120 举报邮箱：jubao@36kr.com
+                        <a href="javascript:;">阿里云</a> 提供计算与安全服务 违法和不良信息举报电话：010-58254120 举报邮箱：jubao@36kr.com
                         <a href="javascript:;">网上有害信息举报</a>
                     </p>
                     <p>
@@ -1067,8 +1038,44 @@
             </div>
         </div>
     </div>
+
+    <!-- swiperimg -->
+    <!-- 定义模版引擎 -->
+
+    <script id="demo" type="text/html">
+
+
+        {{each data}}
+        <li class="img-effect">
+            <a href="javascript:;">
+                <img src="http://localhost:8888/uploads/{{$value.swiperimg}}" style="width: 100%;" />
+            </a>
+        </li>
+        {{/each}}
+
+
+
+    </script>
+
+
+
     <script src="./assets/jquery/jquery-3.5.1.min.js"></script>
+
+
+    <!-- 导入模版引擎 -->
+    <script src="./js/template-web.js"></script>
+
+
     <script src="./js/common.js"></script>
+
+
+
+    <!-- 引入layui.js -->
+    <script src="./assets/layui/layui.js"></script>
+
+
+    <!-- 引入轮播图自己的js -->
+    <script src="./js/swipers.js"></script>
 </body>
 
 </html>

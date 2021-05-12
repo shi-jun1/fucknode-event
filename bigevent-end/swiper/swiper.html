@@ -38,29 +38,67 @@
                 </thead>
                 <tbody>
                     <!-- 这里放数据 -->
-                    <tr>
-                        <td>1</td>
-                        <td>
-                            <img src="#">
-                        </td>
-                        <td>banner_1.png</td>
-                        <td>
-                            <!-- 状态是2选1 -->
-                            <span data-status='2' class="layui-badge layui-bg-green">√</span>
-                            <span data-status='1' class="layui-badge layui-bg-cyan">×</span>
-                        </td>
-                        <td>
-                            <button type="button" class="layui-btn layui-btn-xs layui-btn-danger delete">
-                                删除
-                            </button>
-                        </td>
-                    </tr>
+
                 </tbody>
             </table>
         </div>
     </div>
+
+
+    <!-- 定义模板 -->
+    <script type="text/html" id="swiper_tpl">
+        {{each data}}
+        <tr>
+            <td>{{$value.id}}</td>
+            <td>
+                <a href="javascript:;" id="img-big"><img src="http://localhost:8888/uploads/{{$value.swiperimg}}"></a>
+            </td>
+            <td>http://localhost:8888/uploads/{{$value.swiperimg}}</td>
+            <td>
+                <!-- 状态是2选1 -->
+                <!--  swiperstatusNumber轮播图状态（1代表启用，2代表禁用） -->
+                <!--  条件输出语法
+     
+                {{if flag === 0}}
+                flag的值是0
+                {{else if flag === 1}}
+                flag的值是1
+                {{/if}} -->
+
+
+                <!-- 显示状态渲染 -->
+
+                {{if $value.swiperstatus == 2 }}
+                <span data-status='2' data-id="{{$value.id}}" class="layui-badge layui-bg-cyan">×</span> {{/if}} {{if $value.swiperstatus == 1 }}
+                <span data-status='1' data-id="{{$value.id}}" class="layui-badge layui-bg-green">√</span> {{/if}}
+
+            </td>
+            <td>
+
+
+
+                <button type="button" class="layui-btn layui-btn-xs layui-btn-danger delete" data-id="{{$value.id}}">
+                    删除
+                </button>
+            </td>
+        </tr>
+        {{/each}}
+    </script>
+
+
     <script type="text/javascript" src="../assets/lib/jquery.js"></script>
     <script type="text/javascript" src="../assets/lib/layui/layui.all.js"></script>
+
+
+
+    <!-- 导入baseAPI.js -->
+    <script src="../assets/js/baseAPI.js"></script>
+
+    <!-- 导入模版引擎
+     -->
+    <script src="../assets/lib/template-web.js"></script>
+    <!-- 引入自己的js -->
+    <script src="../assets/js/swiper/swiper.js"></script>
 </body>
 
 </html>
