@@ -14,7 +14,7 @@
     <!-- 卡片区域 -->
     <div class="layui-card">
         <div class="layui-card-header">更换头像</div>
-        <div class="layui-card-body">
+        <div class="layui-card-body" style="display: inline-block; overflow: hidden;">
             <!-- 第一行的图片裁剪和预览区域 -->
             <div class="row1">
                 <!-- 图片裁剪区域 -->
@@ -43,16 +43,29 @@
                 <input type="file" id="file" accept="image/png,image/jpeg" />
                 <button type="button" class="layui-btn" id="btnChooseImage">上传</button>
                 <button type="button" class="layui-btn layui-btn-danger" id="btnUpload">确定</button>
+
+            </div>
+        </div>
+        <div class="avatarlist" style="display: inline-block;">
+            <button type="button" class="layui-btn" id="history">查看历史头像</button>
+            <div id="imglist">
+                <img src="" alt="">
             </div>
         </div>
     </div>
+    <script type="text/html" id="tpl">
+        {{each data}}
+        <img src="{{$value.user_pic}}" alt="" data-id="user_id" index="{{$value.id}}"> {{/each}}
+    </script>
 
     <script src="../assets/lib/layui/layui.all.js"></script>
     <script src="../assets/lib/jquery.js"></script>
     <script src="../assets/lib/cropper/Cropper.js"></script>
     <script src="../assets/lib/cropper/jquery-cropper.js"></script>
+    <script src="../assets/lib/template-web.js"></script>
     <script src="../assets/js/baseAPI.js"></script>
     <script src="../assets/js/user/avatar.js"></script>
+
 </body>
 
 </html>

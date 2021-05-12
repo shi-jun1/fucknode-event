@@ -21,7 +21,7 @@ $(() => {
             success: (res) => {
                 if (res.status !== 0) return layer.msg(res.message, { icon: 5 })
                 layer.msg('修改成功', { icon: 6 }, () => {
-                    location.href = '/user/user.html'
+                    location.href = './user.js'
                 })
             }
         })
