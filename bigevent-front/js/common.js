@@ -4,9 +4,6 @@ $(function() {
         $(this).parents('li').toggleClass('collapsed');
     })
 
-
-
-
     fn()
 
     function fn() {
