@@ -17,7 +17,7 @@ $(function() {
     // 获取轮播图 -渲染到页面
     $.ajax({
         method: 'GET',
-        url: 'http://localhost:8888/api/swipers',
+        url: '/api/swipers',
         success: function(res, req) {
             if (res.status !== 0) return layui.layer.msg(res.message, { icon: 5 })
             console.log(res);
