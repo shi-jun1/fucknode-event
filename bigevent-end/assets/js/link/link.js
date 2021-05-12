@@ -82,12 +82,13 @@ $(function() {
                 url: '/admin/links/ ' + id,
                 success: function(res) {
                     // console.log(res);
+                    $('#preIcon').attr('src', "http://localhost:8888/uploads/" + res.data.linkicon)
                     layui.form.val('editForm', res.data)
                 }
 
             })
 
-            var date;
+            var date
             $('#urlIcon').on('click', function() {
                 $('#linkFile').click()
                 $('#linkFile').on('change', function(e) {
@@ -109,10 +110,12 @@ $(function() {
                 e.preventDefault()
 
                 var fd = new FormData(this)
-                fd.append('linkicon', date)
-                    // fd.forEach((v, i) => {
-                    //     console.log(i, v);
-                    // })
+                if (date) {
+                    fd.append('linkicon', date)
+                }
+                // fd.forEach((v, i) => {
+                //     console.log(i, v);
+                // })
                 $.ajax({
                     method: 'put',
                     url: '/admin/links/' + id,
