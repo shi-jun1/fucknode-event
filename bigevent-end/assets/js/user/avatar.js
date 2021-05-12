@@ -4,7 +4,10 @@ $(function() {
         // 1.2 配置选项
     var options
     const user_id = localStorage.getItem('user_id')
-    $.ajax({
+    getAvatar()
+
+    function getAvatar() {
+        $.ajax({
             method: 'get',
             url: '/admin/users/' + user_id,
             success: (res) => {
@@ -26,7 +29,9 @@ $(function() {
                 $image.cropper(options)
             }
         })
-        // 为上传按钮绑定点击事件
+
+    }
+    // 为上传按钮绑定点击事件
     $('#btnChooseImage').on('click', function() {
         $('#file').click()
     })
@@ -73,9 +78,59 @@ $(function() {
                     console.log(res);
                     return layer.msg('更换头像失败！')
                 }
-                layer.msg('更换头像成功！')
-                window.parent.getUser()
+                layer.msg('更换头像成功', { icon: 6 }, () => {
+                    window.parent.getUser()
+                    location.reload()
+                })
+
             }
         })
     })
+
+
+    //获取历史头像按钮绑定事件
+    $('#history').on('click', () => {
+            $.ajax({
+                method: 'get',
+                url: '/admin/avatar/' + localStorage.getItem('user_id'),
+                success: (res) => {
+                    console.log(res);
+                    if (res.status != 0) return layer.msg('历史头像获取失败', { icon: 5 })
+                    res.data = res.data.reverse()
+                    const htmlStr = template('tpl', res)
+                    $('#imglist').html(htmlStr)
+                }
+            })
+
+        })
+        //历史头像点击事件
+    $('#imglist').on('click', 'img', (e) => {
+        $(e.target).addClass('border').siblings('img').removeClass('border')
+        const url = $(e.target).attr('src')
+        $image
+            .cropper('destroy') // 销毁旧的裁剪区域
+            .attr('src', url) // 重新设置图片路径
+            .cropper(options) // 重新初始化裁剪区域
+    })
+    $('#imglist').on('dblclick', 'img', (e) => {
+        const index = layer.confirm('确定删除这个头像吗?', { icon: 3 }, () => {
+            const id = $(e.target).attr('index')
+            const user_id = localStorage.getItem('user_id')
+            $.ajax({
+                method: 'delete',
+                url: '/admin/avatar',
+                data: {
+                    id,
+                    user_id
+                },
+                success: (res) => {
+                    if (res.status != 0) return layer.msg(res.message, { icon: 5 })
+                    layer.msg(res.message, { icon: 6 })
+                    $('#history').click()
+                }
+            })
+            layer.close(index)
+        })
+    })
+
 })

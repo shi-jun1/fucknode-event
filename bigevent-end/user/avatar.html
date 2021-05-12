@@ -5,22 +5,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="/assets/lib/layui/css/layui.css" />
-    <link rel="stylesheet" href="/assets/lib/cropper/cropper.css" />
-    <link rel="stylesheet" href="/assets/css/avatar.css" />
+    <link rel="stylesheet" href="../assets/lib/layui/css/layui.css" />
+    <link rel="stylesheet" href="../assets/lib/cropper/cropper.css" />
+    <link rel="stylesheet" href="../assets/css/avatar.css" />
 </head>
 
 <body>
     <!-- 卡片区域 -->
     <div class="layui-card">
         <div class="layui-card-header">更换头像</div>
-        <div class="layui-card-body">
+        <div class="layui-card-body" style="display: inline-block; overflow: hidden;">
             <!-- 第一行的图片裁剪和预览区域 -->
             <div class="row1">
                 <!-- 图片裁剪区域 -->
                 <div class="cropper-box">
                     <!-- 这个 img 标签很重要，将来会把它初始化为裁剪区域 -->
-                    <img id="image" src="/assets/images/avatar.jpg" />
+                    <img id="image" src="../assets/images/avatar.jpg" />
                 </div>
                 <!-- 图片的预览区域 -->
                 <div class="preview-box">
@@ -43,16 +43,29 @@
                 <input type="file" id="file" accept="image/png,image/jpeg" />
                 <button type="button" class="layui-btn" id="btnChooseImage">上传</button>
                 <button type="button" class="layui-btn layui-btn-danger" id="btnUpload">确定</button>
+
+            </div>
+        </div>
+        <div class="avatarlist" style="display: inline-block;">
+            <button type="button" class="layui-btn" id="history">查看历史头像</button>
+            <div id="imglist">
+                <img src="" alt="">
             </div>
         </div>
     </div>
+    <script type="text/html" id="tpl">
+        {{each data}}
+        <img src="{{$value.user_pic}}" alt="" data-id="user_id" index="{{$value.id}}"> {{/each}}
+    </script>
 
-    <script src="/assets/lib/layui/layui.all.js"></script>
-    <script src="/assets/lib/jquery.js"></script>
-    <script src="/assets/lib/cropper/Cropper.js"></script>
-    <script src="/assets/lib/cropper/jquery-cropper.js"></script>
-    <script src="/assets/js/baseAPI.js"></script>
-    <script src="/assets/js/user/avatar.js"></script>
+    <script src="../assets/lib/layui/layui.all.js"></script>
+    <script src="../assets/lib/jquery.js"></script>
+    <script src="../assets/lib/cropper/Cropper.js"></script>
+    <script src="../assets/lib/cropper/jquery-cropper.js"></script>
+    <script src="../assets/lib/template-web.js"></script>
+    <script src="../assets/js/baseAPI.js"></script>
+    <script src="../assets/js/user/avatar.js"></script>
+
 </body>
 
 </html>
