@@ -19,3 +19,18 @@ $(function() {
 
     }
 })
+
+  //页面乱窜效果
+//  console.log( $('.menus>li'));
+  $('.menus>li').on('click', function () {
+    $(this).siblings().children('a').removeClass('active')
+    $(this).children('a').addClass('active')
+  })
+  
+  $('#quickNews').on('click', function () {
+    $('')
+  })
+})
+
+
+

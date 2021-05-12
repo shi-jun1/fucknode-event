@@ -5,5 +5,9 @@
         "titleBar.activeBackground": "#523B2C",
         "titleBar.activeForeground": "#FCFBFA"
     },
+<<<<<<< HEAD
     "liveServer.settings.port": 5502
+=======
+    "liveServer.settings.port": 5501
+>>>>>>> list
 }
