@@ -41,6 +41,10 @@
 
                 </tbody>
             </table>
+
+
+            <!-- 分页区域 -->
+            <div id="pageBox"></div>
         </div>
     </div>
 
@@ -51,7 +55,7 @@
         <tr>
             <td>{{$value.id}}</td>
             <td>
-                <a href="javascript:;" id="img-big"><img src="http://localhost:8888/uploads/{{$value.swiperimg}}"></a>
+                <a href="javascript:;" id="img-big" data-img="{{$value.swiperimg}}"><img src="http://localhost:8888/uploads/{{$value.swiperimg}}"></a>
             </td>
             <td>http://localhost:8888/uploads/{{$value.swiperimg}}</td>
             <td>

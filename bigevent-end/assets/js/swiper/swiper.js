@@ -7,19 +7,21 @@ $(function() {
     // 1 --->  从数据库获取数据 渲染到页面
     xuanRan()
 
-    addPic()
+    var q = {
+        pagenum: 1, // 页码值
+        pagesize: 3, //每页显示几条数据
+
+    }
 
     // 获取数据,发送ajax请求
     function xuanRan() {
         $.ajax({
             method: 'GET',
             url: '/admin/swipers',
+            data: q,
             success: (res, req) => {
-                if (res.status !== 0) return layui.layer.msg(res.message, { icon: 5 })
-
                 // console.log(res);
-
-
+                if (res.status !== 0) return layui.layer.msg(res.message, { icon: 5 })
 
 
                 // 渲染到页面
@@ -29,42 +31,15 @@ $(function() {
 
                 $('tbody').html(htmlStr)
 
-                // layui.form.render()
-
-
-
                 // console.log(img);
 
-                // 新增--5 点击放大图片
-
-                $('tbody').on('click', '#img-big', function() {
-
-
-                    var index = $(this).parent().parent().index()
-
-                    // console.log(index);
-                    var img = `<img src="http://localhost:8888/uploads/${res.data[index].swiperimg} " style="width: 100%;"> `
-
-
-
-                    // console.log($('body .layui-layer-content'));
-
-                    // console.log(img);
-
-
-                    // 弹出层
-                    layui.layer.open({
-                        title: '图片预览',
-                        content: img,
-                        area: ['800px', '500px']
-                    });
-
-                })
             }
 
         })
     }
 
+
+    addPic()
 
     // 2 ---> 上传图片功能
     function addPic() {
@@ -79,6 +54,9 @@ $(function() {
 
         // 选择文件框change事件
         $('#myfile').on('change', function(e) {
+
+
+            // e.preventDefault()
 
             // 判断是否上传了文件
             // 获取文件列表
@@ -114,8 +92,10 @@ $(function() {
                 success: (res, req) => {
                     if (res.status !== 0) return layui.layer.msg(res.message, { icon: 5 })
                     console.log(res);
-
                     xuanRan()
+                    layui.layer.msg(res.message, { icon: 6 })
+
+
                 }
             })
 
@@ -214,27 +194,37 @@ $(function() {
     })
 
 
-    // 5-- 新增 ，编辑功能  ------------------>>>>>
-    $('tbody').on('click', '.update', function() {
-        console.log(1);
-        // 获取 id
-        var id = $(this).attr('data-id')
-        console.log(id);
+
+
+
+
+    // 新增--5 点击放大图片------------->>
+
+    $('tbody').on('click', '#img-big', function() {
+
+
+        //  var index = $(this).parent().parent().index()
+        var url = $(this).attr('data-img')
+
+        // ${res.data[index].swiperimg}
+
+        // console.log(index);
+        var img = `<img src="http://localhost:8888/uploads/${url} " style="width: 100%;height: 100%; "> `
+
+        // console.log($('body .layui-layer-content'));
+
+        // console.log(img);
+
 
         // 弹出层
         layui.layer.open({
-            title: '图片预览',
-            content: '111',
-            area: ['500px', '300px']
+            type: 1,
+            title: false,
+            content: img,
+            area: ['800px', '500px']
         });
 
-
     })
-
-
-
-
-
 
 
 })
