@@ -123,8 +123,8 @@
                 <h1 class="logo sprites"><a href="./index.html">36Kr</a></h1>
                 <!-- 菜单栏 -->
                 <ul class="menus">
-                    <li><a  href="javascript:;">首页</a></li>
-                    <li><a href="javascript:;" class="active">快讯</a></li>
+                    <li><a href="./index.html">首页</a></li>
+                    <li><a href="./list.html" class="active">快讯</a></li>
                     <li class="collapsed">
                         <i class="sprites triangle"></i>
                         <a href="javascript:;">资讯</a>
@@ -273,17 +273,17 @@
             </div>
             <!-- 主体 -->
             <div class="kr_body">
-               
+
                 <div class="kr_news_list">
                     <div class="kr_news_date">
                         17 <span>08月</span>
                     </div>
                     <div class="item">
-                    <script type="text/html" id="atl">
-                        {{each data}}
-                     
+                        <script type="text/html" id="atl">
+                            {{each data}}
+
                             <h4>
-                                <a href="javascript:;">{{$value.title}}</a>
+                                <a href="./detail.html">{{$value.title}}</a>
                             </h4>
                             <p class="meta">
                                 <span>15分钟前 分享至</span>
@@ -291,22 +291,22 @@
                                 <a href="javascript:;" class="weibo"></a>
                             </p>
                             <p class="brief">{{$value.content}}</p>
-                       
-                        {{/each}}
 
-                    </script>
-                </div>
-                   
+                            {{/each}}
+
+                        </script>
+                    </div>
+
                 </div>
                 <div class="kr_more" id="less">
-                    
+
                     <a href="javascript:;">加载少一丢丢</a>
-                    
+
                 </div>
                 <div class="kr_more" id="more">
-                    
+
                     <a href="javascript:;">加载更多...</a>
-                    
+
                 </div>
             </div>
         </div>
@@ -407,8 +407,7 @@
                 <div class="kr_copyright">
                     <p>
                         <span>本站由</span>
-                        <a href="javascript:;">阿里云</a>
-                        提供计算与安全服务 违法和不良信息举报电话：010-58254120 举报邮箱：jubao@36kr.com
+                        <a href="javascript:;">阿里云</a> 提供计算与安全服务 违法和不良信息举报电话：010-58254120 举报邮箱：jubao@36kr.com
                         <a href="javascript:;">网上有害信息举报</a>
                     </p>
                     <p>
