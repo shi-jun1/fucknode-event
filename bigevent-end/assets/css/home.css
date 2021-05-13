@@ -1,0 +1,22 @@
+body {
+    background-color: #333 !important;
+    overflow-x: hidden;
+}
+
+.layui-col-md3 {
+    padding: 30px 15px !important;
+    text-align: center;
+}
+
+.layui-card-header {
+    font-size: 20px;
+}
+
+.layui-card-body {
+    font-size: 30px;
+    line-height: 60px;
+}
+
+.layui-card-body span {
+    color: red;
+}

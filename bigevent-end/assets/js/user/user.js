@@ -62,33 +62,33 @@ $(() => {
     }
     //删除用户功能
     $('tbody').on('click', '.delete', (e) => {
-        layer.confirm('确认删除?', { icon: 3, title: '提示' }, function(index) {
-            const id = $(e.target).attr('index')
-            const len = $('.delete').length
-            $.ajax({
-                method: 'delete',
-                url: '/admin/users/' + id,
-                success: (res) => {
-                    console.log(res);
-                    if (res.status !== 0) layer.msg('删除用户失败', { icon: 5 })
-                    layer.msg('删除用户成功', { icon: 6 })
-                        // 重新渲染列表
-                    if (len === 1) {
-                        // 如果 len 的值等于1，证明删除完毕之后，页面上就没有任何数据了
-                        // 页码值最小必须是 1
-                        data.pagenum = data.pagenum === 1 ? 1 : data.pagenum - 1
-                        location.reload()
-                    }
-                    userlist()
+            layer.confirm('确认删除?', { icon: 3, title: '提示' }, function(index) {
+                const id = $(e.target).attr('index')
+                const len = $('.delete').length
+                $.ajax({
+                    method: 'delete',
+                    url: '/admin/users/' + id,
+                    success: (res) => {
+                        console.log(res);
+                        if (res.status !== 0) layer.msg('删除用户失败', { icon: 5 })
+                        layer.msg('删除用户成功', { icon: 6 })
+                            // 重新渲染列表
+                        if (len === 1) {
+                            // 如果 len 的值等于1，证明删除完毕之后，页面上就没有任何数据了
+                            // 页码值最小必须是 1
+                            data.pagenum = data.pagenum === 1 ? 1 : data.pagenum - 1
+                            location.reload()
+                        }
+                        userlist()
 
-                }
+                    }
+
+                })
 
             })
 
         })
-
-    })
-
+        // 密码修改功能
     $('tbody').on('click', '.resetpwd', (e) => {
         const index = layer.open({
             type: 1,

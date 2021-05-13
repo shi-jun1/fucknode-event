@@ -30,5 +30,4 @@ form.verify({
         var pwd = $('.layui-form [name=password').val()
         if (pwd !== value) return '两次密码必须一致'
     },
-    // email: ['/^([a-zA-Z\d])(\w|\-)+@[a-zA-Z\d]+\.[a-zA-Z]{2,4}$/', '邮箱格式不正确']
 })
