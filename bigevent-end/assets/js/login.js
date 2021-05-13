@@ -12,7 +12,10 @@ $(function() {
     //     }
     // }
     // })
-
+    $('#particles').particleground({
+        dotColor: '#7ec7fd',
+        lineColor: '#7ec7fd'
+    });
     $('.layui-form').on('submit', function(e) {
         e.preventDefault()
 
