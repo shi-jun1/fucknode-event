@@ -42,8 +42,15 @@ $(function () {
       if ($('#shuruname').val().trim() == '' || $('#shurucontent').val().trim() == '') {
         return layui.layer.msg('用户名和内容不能为空',{icon:5})
       }
-//内容不能大于200
-      if( $('#shurucontent').val().trim().length >=200 ) return layui.layer.msg('内容不能大于200',{icon:5})
+//内容不能大于50
+      if ($('#shurucontent').val().trim().length >= 50) return layui.layer.msg('内容不能大于50', { icon: 5 });
+
+      //过滤敏感词
+      if ($('#shuruname').val().trim() == '激情' || $('#shurucontent').val().trim() == '激情' ) {
+        return layui.layer.msg('不能有敏感词', {icon:5});
+      }
+     
+
       
       
         //发表评论
