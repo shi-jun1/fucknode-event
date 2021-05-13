@@ -101,3 +101,9 @@ body {
 .border {
     border: 3px solid rgb(67, 207, 75);
 }
+
+#imglist {
+    overflow: auto;
+    width: 500px;
+    height: 430px;
+}

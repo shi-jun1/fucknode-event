@@ -66,7 +66,7 @@ $(function() {
             })
             .toDataURL('image/png') // 将 Canvas 画布上的内容，转化为 base64 格式的字符串
             // 2. 调用接口，把头像上传到服务器
-        console.log(dataURL);
+            // console.log(dataURL);
         $.ajax({
             method: 'POST',
             url: '/admin/avatar',
@@ -94,8 +94,11 @@ $(function() {
                 method: 'get',
                 url: '/admin/avatar/' + localStorage.getItem('user_id'),
                 success: (res) => {
-                    console.log(res);
-                    if (res.status != 0) return layer.msg('历史头像获取失败', { icon: 5 })
+                    // console.log(res);
+                    if (res.status != 0) {
+                        layer.msg('历史头像获取失败', { icon: 5 })
+                        return $('#imglist').empty()
+                    }
                     res.data = res.data.reverse()
                     const htmlStr = template('tpl', res)
                     $('#imglist').html(htmlStr)
